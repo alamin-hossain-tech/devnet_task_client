@@ -1,16 +1,36 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
-    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
+:root {
+  --lightBlue: #0080ff2d;
+  --blue: rgb(37 99 235);
+  --white: #ffffff;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
+* {
+  box-sizing: border-box;
+}
+ul li .active {
+  position: relative;
+  background-color: var(--lightBlue);
+  color: var(--blue);
+}
+ul li .active::before {
+  content: "";
+  position: absolute;
+  width: 5px;
+  height: 100%;
+  background-color: var(--blue);
+  /* border-radius: 0px 5px 5px 0px; */
+  left: 0px;
+}
+
+.selected {
+  background: var(--lightBlue);
+}
+
+.detail_product img {
+  width: 300px;
+  padding: 1.5rem;
 }
