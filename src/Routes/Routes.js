@@ -11,6 +11,9 @@ export const routes = createBrowserRouter([
         path: "/",
         element: <Products></Products>,
       },
+      {
+        path: "product/view/:id",
+      },
     ],
   },
 ]);
