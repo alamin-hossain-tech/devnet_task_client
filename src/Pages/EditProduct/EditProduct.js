@@ -44,7 +44,7 @@ const EditProduct = () => {
               stock: data.productStock,
               ratings: data.productRating,
             };
-            fetch(`http://localhost:5000/edit/${id}`, {
+            fetch(`https://devnest-task-server.vercel.app/edit/${id}`, {
               method: "PUT",
               headers: { "content-type": "application/json" },
               body: JSON.stringify(product),
@@ -69,7 +69,7 @@ const EditProduct = () => {
         stock: data.productStock,
         ratings: data.productRating,
       };
-      fetch(`http://localhost:5000/edit/${id}`, {
+      fetch(`https://devnest-task-server.vercel.app/edit/${id}`, {
         method: "PUT",
         headers: { "content-type": "application/json" },
         body: JSON.stringify(product),

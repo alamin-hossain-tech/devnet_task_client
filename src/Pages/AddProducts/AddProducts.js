@@ -41,7 +41,7 @@ const AddProducts = () => {
             stock: data.productStock,
             ratings: data.productRating,
           };
-          fetch("http://localhost:5000/add-product", {
+          fetch("https://devnest-task-server.vercel.app/products", {
             method: "POST",
             headers: { "content-type": "application/json" },
             body: JSON.stringify(product),

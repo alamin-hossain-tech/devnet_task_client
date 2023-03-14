@@ -1,46 +1,28 @@
-import {
-  Breadcrumb,
-  Button,
-  Modal,
-  Spinner,
-  Table,
-  TextInput,
-} from "flowbite-react";
+import { Breadcrumb, Button, Modal, Spinner, Table } from "flowbite-react";
 import React, { useState } from "react";
 import { toast, Toaster } from "react-hot-toast";
-import { BsHouseDoor, BsPlus, BsSearch } from "react-icons/bs";
+import { BsHouseDoor, BsPlus } from "react-icons/bs";
 import { HiOutlineExclamationCircle } from "react-icons/hi";
 import { useQuery } from "react-query";
 import { Link } from "react-router-dom";
 
 const Products = () => {
   const [page, setPage] = useState(0);
-  const [search, setSearch] = useState("");
+
   const [deleteId, setDeleteId] = useState(null);
 
   const [openConfirmModal, setOpenConfirmModal] = useState(false);
 
   const { data, refetch, isLoading } = useQuery({
-    queryKey: [search, page],
+    queryKey: [page],
     queryFn: () =>
       fetch(
         `https://devnest-task-server.vercel.app/products?page=${page}`
       ).then((res) => res.json()),
   });
-  const handleSerch = (e) => {
-    e.preventDefault();
-    const search = e.target.search.value;
-    setSearch(search);
-    // refetch();
-    setPage(0);
-    setTimeout(() => {
-      const searchvalue = document.getElementById("search");
-      searchvalue.value = search;
-    }, 300);
-  };
 
   const handleDelete = (id) => {
-    fetch(`http://localhost:5000/delete/${id}`, {
+    fetch(`https://devnest-task-server.vercel.app/delete/${id}`, {
       method: "POST",
       headers: { "content-type": "application/json" },
     })
@@ -80,32 +62,6 @@ const Products = () => {
               <BsPlus></BsPlus>Add Product
             </Button>
           </Link>
-          <form onSubmit={handleSerch}>
-            <div className="flex gap-2">
-              <TextInput
-                id="search"
-                type="text"
-                icon={() => <BsSearch></BsSearch>}
-                placeholder="Search product"
-                className="w-72"
-                name="search"
-              />
-              <Button type="submit" className="px-4">
-                Search
-              </Button>
-              <Button
-                onClick={() => {
-                  setSearch("");
-                  const search = document.getElementById("search");
-                  search.value = "";
-                  setPage(0);
-                }}
-                color="light"
-              >
-                Reset
-              </Button>
-            </div>
-          </form>
         </div>
         <div className="pt-8">
           {isLoading ? (

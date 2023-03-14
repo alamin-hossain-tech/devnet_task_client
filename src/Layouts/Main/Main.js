@@ -1,17 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
-import { BsBagPlus, BsBox, BsSearch, BsTrash3 } from "react-icons/bs";
-import { HiOutlineExclamationCircle } from "react-icons/hi";
-import { Button, Modal } from "flowbite-react";
+import { BsBagPlus, BsBox } from "react-icons/bs";
 
 const Main = () => {
-  const [modalOpen, setModalOpen] = useState(false);
-
-  const handleLogout = () => {
-    localStorage.clear();
-    window.location.reload();
-  };
-
   return (
     <div>
       <div className="flex flex-col md:flex-row">
@@ -23,7 +14,7 @@ const Main = () => {
           </Link>
 
           <div className="pt-12">
-            <ul className="flex md:flex-col justify-center gap-12 md:gap-5  text-lg font-semibold">
+            <ul className="flex flex-col justify-center gap-1 md:gap-5  text-lg font-semibold">
               <li>
                 <NavLink to="/" className="flex gap-2 items-center px-8 py-2">
                   <BsBox className="inline"></BsBox>Products
@@ -41,7 +32,7 @@ const Main = () => {
           </div>
         </div>
         <div className="w-full">
-          <div className=" pr-4 md:px-32 flex justify-end gap-4 items-center h-20  border-b-2"></div>
+          <div className=" pr-4 md:px-32 d-none md:flex justify-end gap-4 items-center h-20  border-b-2"></div>
           <Outlet></Outlet>
         </div>
       </div>
